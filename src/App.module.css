@@ -93,6 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 260px;
 	font-size: 18px;
 	border: 2px solid;
+	background-color: #e8f8e8;
 }
 
 .input::placeholder {
@@ -100,7 +101,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .input:focus {
-	box-shadow:5px 5px 5px rgba(150,	195, 149, 50%);
+	box-shadow:5px 5px 5px rgba(150,	195, 149, 30%);
+	background-color: #ffff;
 }
 
 .input_button {
