@@ -24,7 +24,7 @@ export type UserType = {
 
 function App() {
 
-const [users, setUsers] = useState<UserSearchType[]>([]);
+
 const [ searchTerm, setSearchTerm] = useState("raspberry1")
 const [ userDetails, setUserDetails] = useState <UserType | null> (null)
 const [selectedUser, setSelectedUser] = useState <UserSearchType | null> (null)
@@ -37,20 +37,7 @@ useEffect(() => {
 }, [selectedUser]
 )
 
-useEffect(() => {
-	if( selectedUser) {
-		document.title = selectedUser.login
-	}
-}, [selectedUser]
-)
 
-useEffect( () => {
-axios
-.get<SearchResult>(`https://api.github.com/search/users?q=${searchTerm}`)
-.then ( res => {
-	setUsers(res.data.items)
-})
-}, [searchTerm])
 
 useEffect( () => {
 	if( selectedUser) {
@@ -66,13 +53,9 @@ return (
 	<div className={style.main}>
 	<div>
 		<Input setSearchTerm={setSearchTerm}/>
-		<UserList setSelectedUser={setSelectedUser} users={users} selectedUser={selectedUser}/>
+		<UserList searchTerm={searchTerm} selectedUser={selectedUser} onSelectedUser={setSelectedUser}/>
 	</div>
-
-	{ userDetails? 
-		<Profile userDetails={userDetails}/>
-		: <div></div>
-}
+		<Profile  userDetails={userDetails}/>
 	</div>
 )
 }

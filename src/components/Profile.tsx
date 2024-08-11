@@ -3,16 +3,23 @@ import style from '../App.module.css'
 
 
 type PropsType = {
-	userDetails: UserType
-}
+userDetails: UserType | null;
+};
 
-function Profile(props: PropsType) {
-
-return <div className={style.profile}>
-			<img src={props.userDetails.avatar_url}></img>
-			<p>Location: {props.userDetails.location}</p>
-			<p>Followers: {props.userDetails.followers}</p>
+function Profile({ userDetails }: PropsType) {
+return (
+	<>
+		{userDetails ? (
+		<div className={style.profile}>
+			<img src={userDetails.avatar_url} alt="User Avatar" />
+			<p>Location: {userDetails.location}</p>
+			<p>Followers: {userDetails.followers}</p>
 		</div>
+		) : (
+		<div></div>
+		)}
+	</>
+);
 }
 
-export default Profile
+export default Profile;

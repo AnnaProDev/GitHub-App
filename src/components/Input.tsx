@@ -2,12 +2,13 @@ import { useState } from 'react'
 import style from '../App.module.css'
 
 type PropsType = {
-	setSearchTerm: (a: string) => void
+	setSearchTerm: (tempSearch: string) => void
 }
 
 function Input(props: PropsType) {
 
 	const [ tempSearch, setTempSearch] = useState("raspberry1")
+
 
 	return <div>
 		<input className={style.input} 
